@@ -15,9 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from estacionamiento.views import insert_ticket
+from estacionamiento.views import insert_ticket,create_cashier,delete_cashier,verif_password, add_operation,get_operaciones_fecha,add_estaciona
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^insert_ticket/', insert_ticket ),
+    url(r'^create_cashier/', create_cashier ),
+    url(r'^delete_cashier/', delete_cashier ),
+    url(r'^verif_password/', verif_password ),
+    url(r'^add_operation/', add_operation ),
+    url(r'^get_ope_fecha/', get_operaciones_fecha ),
+    url(r'^add_estaciona/', add_estaciona ),
 ]

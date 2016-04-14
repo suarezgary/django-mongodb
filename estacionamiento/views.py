@@ -19,6 +19,9 @@ import hashlib, binascii
 client = pymongo.MongoClient('localhost', 27017)
 db = client['estacio_ga']
 
+'''
+Metodo para insertar un ticket al sistema
+'''
 def insert_ticket(request):
     if request.method=='POST':
             rdata=json.loads(request.body)
@@ -39,6 +42,23 @@ def insert_ticket(request):
                 print('Error al insertar en la base de datos')
                 return StreamingHttpResponse('false')
     return StreamingHttpResponse('GET request')
+
+'''
+Metodo para hacer que un ticket se ponga como pago
+'''
+def pagar_ticket(request):
+	if request.method=='POST':
+			rdata=json.loads(request.body)
+			print(rdata)
+			try:
+				tickets = db.tickets
+				result = tickets.update_one( {"_id": rdata['num_ticket']}, { "$set": {'pago_hecho':True, 'hora_pago':datetime.datetime.utcnow()} } )
+				print(result)
+				return StreamingHttpResponse('true')
+			except ValueError:
+				print('Error al actualizar el ticket')
+				return StreamingHttpResponse('false')
+	return StreamingHttpResponse('GET request')
 
 
 def create_cashier(request):

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from estacionamiento.views import insert_ticket,create_cashier,delete_cashier,verif_password, add_operation,get_operaciones_fecha,add_estaciona
+from estacionamiento.views import insert_ticket,pagar_ticket,create_cashier,delete_cashier,verif_password, add_operation,get_operaciones_fecha,add_estaciona
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

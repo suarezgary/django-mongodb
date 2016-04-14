@@ -20,6 +20,7 @@ from estacionamiento.views import insert_ticket,create_cashier,delete_cashier,ve
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^insert_ticket/', insert_ticket ),
+    url(r'^pagar_ticket/', pagar_ticket ),
     url(r'^create_cashier/', create_cashier ),
     url(r'^delete_cashier/', delete_cashier ),
     url(r'^verif_password/', verif_password ),
